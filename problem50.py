@@ -1,40 +1,40 @@
 def sieve(n):
     primes = [True] * (n + 1)
-    primes[0] = False
-    primes[1] = False
-    b = 2
-    for a in xrange(2, n + 1):
+    a = 2
+    #b = 2
+    primes[0:2] = [False, False]
+    while a * 2<= n:
+        b = 2
         while a * b <= n:
             primes[a * b] = False
-            b +=1
-        b = 2
+            b+=1
+        a+=1
     return primes
 
-def sum(n):
-    isprime = sieve(n)
-    primes = [x[0] for x in filter(lambda x: x[1], enumerate(isprime))]
-    #print primes
-    print len(primes)
-   # print primes
-    s = 0
-    longest = [0,0]
-    for i, a in enumerate(primes[::-1]):
-        s = a
-        print i
-        count = 0
-        for b in primes[::-1][i + 1::]:
-            s -= b
-            count += 1
-        # print sum
-            if(s < 0):
-                break
-            #print "Primes:",s, count
-            if(s == 0):
-                print "Found", a
-                #print "found:",s, count
-                if(count > longest[0]):
-                    longest[0] = count
-                    longest[1] = a
-    print "The best", longest
+def simplify(l):
+    primes = []
+    for index, isPrime in enumerate(l):
+        if isPrime:
+            primes.append(index)
+    return primes
 
-sum(1000)
+primes = simplify(sieve(10 ** 6))
+sum = 0
+primeSum = 0
+chain = 0
+primeChain = 0
+print 'sieve done'
+for i, prime_start in enumerate(primes):
+    sum = 0
+    chain = 0
+    for prime_to_add in primes[i:]:
+        sum += prime_to_add
+        chain += 1
+        if chain > primeChain and sum in primes:
+            primeSum = sum
+            primeChain = chain
+            print primeSum, primeChain
+        if sum >= 10 ** 6:
+            break
+    
+print primeSum, primeChain
