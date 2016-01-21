@@ -11,12 +11,13 @@ def sieve(n):
                 b+=1
     return list
 
-start = time.time()
-n = 2000000
-primes = sieve(2000000)
-primesum = 0
-for a in range(0, n):
-    if primes[a] == True:
-        #print (a + 2)
-        primesum += (a +2)
-print primesum, time.time() - start
+if __name__ == '__main__':
+    start = time.time()
+    n = 2000000
+    primes = sieve(2000000)
+    primesum = 0
+    for a in range(0, n):
+        if primes[a] == True:
+            #print (a + 2)
+            primesum += (a +2)
+    print primesum, time.time() - start
