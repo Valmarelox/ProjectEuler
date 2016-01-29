@@ -1,4 +1,4 @@
-def load(name):
+"""def load(name):
     f = open(name)
     #lines = f.readlines()
     pyr = []
@@ -20,4 +20,30 @@ def rec(pyr, m, n, s):
 
 pyr = load('prob18')
 print pyr
-print rec(pyr,0,0,0)
+print rec(pyr,0,0,0)"""
+
+numbers = []
+def load():
+    f = open("prob18", "rt")
+    nums = []
+    i = 0
+    for line in f.readlines():
+        nums.append([])
+        for num in line.split(' '):
+            nums[i].append(int(num))
+        i+= 1
+    return nums
+
+def run():
+    pass
+
+def rec(row, index):
+    if row == len(numbers):
+        return 0
+    curr = numbers[row][index]
+    left = curr + rec(row + 1, index)
+    right = curr + rec(row + 1, index + 1)
+    return left if left > right else right
+
+numbers = load()
+print rec(0,0)
