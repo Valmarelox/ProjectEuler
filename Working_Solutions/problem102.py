@@ -18,6 +18,6 @@ def loadFile(fileName):
 			l.append(((line[0], line[1]), (line[2], line[3]), (line[4], line[5])))
 	return l
 
-l = loadFile('euler102.txt')
+l = loadFile('files/102.txt')
 
 print sum(map(lambda t: pointInTriangle((0, 0), t[0], t[1], t[2]), l))

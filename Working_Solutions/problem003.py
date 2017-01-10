@@ -1,15 +1,4 @@
-from itertools import count
-
-primes = []
-def primegen():
-    for number in count(2):
-        for prime in primes:
-            if number % prime == 0:
-                break
-        else:
-            primes.append(number)
-            yield number
-
+from utils.primegen import primegen
 
 gen = primegen()
 num = 600851475143

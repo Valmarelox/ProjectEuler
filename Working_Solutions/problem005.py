@@ -1,4 +1,4 @@
-from primegen import *
+from utils.primegen import *
 HIGH = 20
 primes = list(primegen(HIGH))
 factors = [primefactorization(number) for number in xrange(2, HIGH)]
