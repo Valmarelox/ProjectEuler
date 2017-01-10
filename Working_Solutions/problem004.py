@@ -1,3 +1,4 @@
+#look at this ugly
 def pali(a, b):
     aresult = ""
     aresult = str(a * b)

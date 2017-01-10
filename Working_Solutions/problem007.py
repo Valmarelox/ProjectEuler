@@ -1,3 +1,4 @@
+#bad and not optimized
 import time
 def prime(n):
     for a in range(n//2, 1, -1):
