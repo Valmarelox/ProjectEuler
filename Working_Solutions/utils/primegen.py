@@ -1,7 +1,10 @@
 from itertools import count
 primes = set()
 def primegen(upper_limit=None):
-    gen = xrange(2, upper_limit + 1) if upper_limit != None else count(2)
+    start = 2 if len(primes) == 0 else max(primes) + 1
+    gen = xrange(start, upper_limit + 1) if upper_limit != None else count(start)
+    for prime in primes: yield prime
+
     for number in gen:
         if number in primes:
             yield number
@@ -12,6 +15,9 @@ def primegen(upper_limit=None):
         else:
             primes.add(number)
             yield number
+
+def isPrime(number):
+    return number in primes
 
 def primefactorization(n):
     factors = []
