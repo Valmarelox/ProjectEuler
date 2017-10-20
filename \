@@ -1,0 +1,13 @@
+
+
+def _X(n1, n2, n3):
+    return n1 ^ n2 ^ n3
+
+def X(n):
+    return _X(n, 2*n, 3*n)
+
+
+for n in xrange(1, 50):
+    x_n = X(n)
+    if x_n == 0:
+        print n, x_n
